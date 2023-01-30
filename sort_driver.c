@@ -70,12 +70,16 @@ main(int argc, char **argv)
 		return 0;
 	} else if (strcmp(argv[1], "selection") == 0)
 		sorter = selectionSort;
+	else if (strcmp(argv[1], "reverse") == 0)
+		sorter = reverseSelectionSort;
 	else if (strcmp(argv[1], "insertion") == 0)
 		sorter = insertionSort;
 	else if (strcmp(argv[1], "bubble") == 0)
 		sorter = bubbleSort;
 	else if (strcmp(argv[1], "quick") == 0)
 		sorter = quickSort;
+	else if (strcmp(argv[1], "shell") == 0)
+		sorter = shellSort;
 	else if (strcmp(argv[1], "merge") == 0)
 		sorter = mergeSort;
 	else {

@@ -28,6 +28,29 @@ selectionSort(int array[], int n)
 	}
 	return compars;
 }
+int
+reverseSelectionSort(int array[], int n)
+{
+	int compars = 0;	/* comparisons */
+	int i, j;
+
+	for (i = 0; i < n; i++) {
+		int min = array[i];
+		int minPos = i;
+
+		for (j = i + 1; j < n; j++) {
+			compars++;
+			if (min < array[j]) {
+				min = array[j];
+				minPos = j;
+			}
+		}
+
+		array[minPos] = array[i];
+		array[i] = min;
+	}
+	return compars;
+}
 
 int
 insertionSort(int array[], int n)
@@ -74,15 +97,37 @@ bubbleSort(int array[], int n)
 
 /*  -------- Quick sort stuff starts here --------- */
 
-
+//interates through the array to sort based on the pivot then recursively sorts the array
 int
 quickSortR(int array[], int start, int stop)
 {
+	int compars = 0;//# of comparisons
+	int i = start;
+	int tempPoint = 0;
 
-	//  -----  add your code here   -------
-	// don't forget to count and return the number of comparisons
+	if(start>=stop-1){
+		return compars;
+	}
+	if(stop == 1){
+		return 0;
+	}
+	for(int j = start; j<stop; j++){
+		if(array[j]<=array[stop - 1]){
+			tempPoint = array[i];
+			array[i] = array[j];
+			array[j] = tempPoint;
+			i++;
 
-	return 0;
+		}
+		compars++;
+
+	}
+
+	compars += quickSortR(array, start, i-1);
+
+	compars += quickSortR(array, i, stop);
+
+	return compars;
 }
 
 int
